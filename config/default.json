@@ -1,0 +1,19 @@
+{
+    "DB": {
+        "NAME": "",
+        "URI": "",
+        "OPTIONS": "",
+        "URI_CLOUD_PREFIX": "",
+        "URI_CLOUD_HOST": "",
+        "URI_CLOUD_OPTIONS": "",
+        "USERNAME": "",
+        "ca": "",
+        "key": ""
+    },
+    "apm": {
+        "serverUrl": "https://9a6521b13a6c47b1b006d789f0937d0b.apm.westeurope.azure.elastic-cloud.com:443"
+    },
+    "dbLogs": {
+        "consoleLevel": "debug"
+    }
+}

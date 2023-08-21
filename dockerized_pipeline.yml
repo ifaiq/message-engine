@@ -1,0 +1,66 @@
+trigger:
+  - master
+
+variables:
+  - group: communication-vg
+  - group: XBackend-agents-vg
+
+pool:
+  name: $(Dockerized)
+  vmImage: $(Dockerized_VM)
+
+steps:
+  - checkout: self
+    submodules: true
+  - task: DockerCompose@0
+    displayName: Run a Docker Compose command
+    inputs:
+      action: "Run a Docker Compose command"
+      dockerComposeCommand: "up --build --abort-on-container-exit"
+      dockerComposeFile: docker-compose.yml
+      projectName: $(Build.Repository.Name)
+      dockerComposeFileArgs: |
+        sendGridApiKey=$(sendgrid_key)
+        termiiApiKey=$(termii_key)
+        firebaseKey=$(firebase_key)
+        weApiPassword=$(new_we_api_password)
+        twilioSID=$(twilioSID)
+        twilioSIDTest=$(twilioSIDTest)
+        twilioApiKey=$(twilioApiKey)
+        twilioApiKeyTest=$(twilioApiKeyTest)
+        twilioApiSecret=$(twilioApiSecret)
+        twilioApiSecretTest=$(twilioApiSecretTest)
+        apmApiKey=$(apmApiKey)
+      qualifyImageNames: true
+  - task: PublishTestResults@2
+    displayName: "Publish Test Results"
+    inputs:
+      testResultsFormat: "JUnit"
+      searchFolder: $(Build.Repository.LocalPath)/test
+      testResultsFiles: junit.xml
+    condition: succeededOrFailed()
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publish Code Coverage Results"
+    inputs:
+      codeCoverageTool: "Cobertura"
+      summaryFileLocation: "$(Build.Repository.LocalPath)/coverage/cobertura-coverage.xml"
+      reportDirectory: "$(Build.Repository.LocalPath)/coverage/"
+    condition: succeededOrFailed()
+
+  - task: CmdLine@2
+    displayName: "Clean up docker containers and images"
+    condition: |
+      and
+      (
+        succeededOrFailed(),
+        eq(variables['Dockerized'],'LinuxSelfHosted')
+      )
+    inputs:
+      script: |
+        # Clean up docker
+        docker ps --filter name=node-app* -aq | xargs docker rm -f
+        docker rmi -f $(docker images | grep 'app')
+        docker rmi -f $(docker images | grep 'test')
+        docker rm -f mongo
+        docker rmi -f mongo node
+        docker image prune -f

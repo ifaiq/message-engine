@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messagingbackend-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: messagingbackend-dev
+  template:
+    metadata:
+      labels:
+        app: messagingbackend-dev
+    spec:
+      containers:
+        - name: messagingbackend-dev
+          command: ["npm"]
+          args: ["run", "debug"]
+          image: mezohub.azurecr.io/messagingbackend
+          resources:
+            requests:
+              memory: "150Mi"
+              cpu: "100m"
+            limits:
+              memory: "450Mi"
+              cpu: "300m"
+          env:
+            - name: NODE_ENV
+              value: "development"
+          ports:
+            - containerPort: 3002
+          readinessProbe:
+            httpGet:
+              path: /api
+              port: 3002
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /api
+              port: 3002
+            initialDelaySeconds: 300
+            periodSeconds: 60
+            successThreshold: 1
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: agentpool
+                operator: In
+                values:
+                - devpool

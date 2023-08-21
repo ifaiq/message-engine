@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messagingbackend
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: messagingbackend
+  template:
+    metadata:
+      labels:
+        app: messagingbackend
+    spec:
+      containers:
+        - name: messagingbackend
+          image: mezohub.azurecr.io/messagingbackend
+          resources:
+            requests:
+              memory: "300Mi"
+              cpu: "300m"
+            limits:
+              memory: "1500Mi"
+              cpu: "800m"
+          env:
+            - name: NODE_ENV
+              value: "production"
+          ports:
+            - containerPort: 3002
+          readinessProbe:
+            httpGet:
+              path: /api
+              port: 3002
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /api
+              port: 3002
+            initialDelaySeconds: 300
+            periodSeconds: 60
+            successThreshold: 1
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: agentpool
+                operator: In
+                values:
+                - mempool
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: messagingbackend-autoscaler
+  namespace: production
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: messagingbackend
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 95

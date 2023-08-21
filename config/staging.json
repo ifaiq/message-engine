@@ -1,0 +1,120 @@
+{
+    "timezone": "Africa/Cairo",
+    "frontend_host": "http://localhost:5000",
+    "storage_host": "https://mezostore.blob.core.windows.net/",
+    "email_address": "no-reply@mazad.at",
+    "bcc_email_address": "mohamed.khalifa@ideainmotion.com",
+    "reports_mail": "info@mazad.at",
+    "brandName": "mazad.at",
+    "REDIS_HOST": "127.0.0.1",
+    "REDIS_PORT": 6379,
+    "AI_URL": "",
+    "apm": {
+        "apmApiKey": "Secret Key"
+    },
+    "DB": {
+        "NAME": "Mazadat-Development",
+        "URI": "mongodb://localhost:27017/",
+        "OPTIONS": "",
+        "USERNAME": "",
+        "ca": "mongoCA.pem",
+        "key": "client.pem"
+    },
+    "ES": {
+        "HOST1": "localhost",
+        "CLOUD_ID": "",
+        "PORT": 9200,
+        "USERNAME": "",
+        "key": "",
+        "ca": ""
+    },
+    "jwtPrivateKey": "Secret key",
+    "sms": {
+        "sender": "Mazadat",
+        "termiiApiKey": "Secret Key",
+        "weApiPassword": "weApiPassword",
+        "weApiUserName": "11021112904",
+        "weSender": "Mazadat",
+        "weAccountId": 1537,
+        "twilioSender": "Mazadat",
+        "twilioSID": "twilioSID",
+        "twilioSIDTest": "twilioSIDTest",
+        "twilioApiKey": "twilioApiKey",
+        "twilioApiKeyTest": "twilioApiKeyTest",
+        "twilioApiSecret": "twilioApiSecret",
+        "twilioApiSecretTest": "twilioApiSecretTest"
+    },
+    "mail": {
+        "sendGridApiKey": "Secret Key",
+        "mazadatSimpleEnTemplateId": "d-a265ef76152d4b4fb3e0dc5a0d04841b",
+        "mazadatSimpleArTemplateId": "d-066c072bb24c482083b34f73e3933342",
+        "emailVerificationTime": 1
+    },
+    "firebaseCredentials": {
+        "project_id": "mazadat-firebase",
+        "client_email": "firebase-adminsdk-6xwcj@mazadat-firebase.iam.gserviceaccount.com",
+        "firebaseKey": "Secret key"
+    },
+    "dbLogs": {
+        "level": "debug"
+    },
+    "freePeriodRemainingDays": 1,
+    "location": {
+        "maxDistance": 25000
+    },
+    "invitation": {
+        "maxNumberOfInvitations": 30,
+        "invitationExpiryTime": 1,
+        "resendCounter": 5,
+        "phoneInvitationsLimit": 3,
+        "invitationUrl": "https://dev.mazad.at/invitation"
+    },
+    "auction": {
+        "defaultBidIncrement": 1,
+        "maxLimitOfBeingHighestBidder": 3,
+        "silverCoinMultipleForPosting": 1
+    },
+    "charging": {
+        "noChargePeriod": 1
+    },
+    "maxInt32": 2147483647,
+    "biddingHistorySliceValue": 10,
+    "gifts": {
+        "numberOfUserGifts": 6,
+        "gift1ExpiryInDays": 30,
+        "gift2ExpiryInDays": 30,
+        "gift3ExpiryInDays": 30,
+        "gift4ExpiryInDays": 30,
+        "gift5ExpiryInDays": 30,
+        "gift6ExpiryInDays": 90,
+        "gift6PrimaryValue": 50,
+        "gift6SecondaryValue": 30,
+        "gift2Percentage": 4,
+        "gift4Percentage": 6,
+        "gift5Value": 100,
+        "gift6PrimaryMinimumPrice": 250,
+        "gift6SecondaryMinimumPrice": 500,
+        "gift5MinimumPrice": 1500,
+        "gift6MaxUsesBeforeBlock": 5
+    },
+    "post": {
+        "thumbnailsContainerName": "thumbnailslocal"
+    },
+    "promotionalPost": {
+        "thumbnailsContainerName": "thumbnailslocal"
+    },
+    "dayDeal": {
+        "thumbnailsContainerName": "thumbnailslocal"
+    },
+    "mazadatFirstUserID": "603a79ca2186e3001e5d4353",
+    "notificationsContainer": "notif-local",
+    "engagement": {
+        "maxNumberOfSimilarPosts": 100,
+        "maxNumberOfSearchUsers": 10000
+    },
+    "reports": {
+        "containerName": "reports-local"
+    },
+    "valetRequestEmail": "valet@mazad.at",
+    "PPSRequestEmail": "pps@mazad.at"
+}

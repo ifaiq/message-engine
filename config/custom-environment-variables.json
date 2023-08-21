@@ -1,0 +1,28 @@
+{
+    "DBPW_PROD": "DBPW_PROD",
+    "DBPW_DEV": "DBPW_DEV",
+    "DBPW_CLOUD_development": "DBPW_CLOUD_development",
+    "DBPW_CLOUD_production": "DBPW_CLOUD_production",
+    "ESPW_DEV": "ESPW_DEV",
+    "ESPW_PROD": "ESPW_PROD",
+    "jwtPrivateKey": "jwtSecretKey",
+    "apm": {
+        "apmApiKey": "apmApiKey"
+    },
+    "sms": {
+        "termiiApiKey": "termiiApiKey",
+        "weApiPassword": "weApiPassword",
+        "twilioSID": "twilioSID",
+        "twilioSIDTest": "twilioSIDTest",
+        "twilioApiKey": "twilioApiKey",
+        "twilioApiKeyTest": "twilioApiKeyTest",
+        "twilioApiSecret": "twilioApiSecret",
+        "twilioApiSecretTest": "twilioApiSecretTest"
+    },
+    "firebaseCredentials": {
+        "firebaseKey": "firebaseKey"
+    },
+    "mail": {
+        "sendGridApiKey": "sendGridApiKey"
+    }
+}

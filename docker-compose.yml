@@ -1,0 +1,36 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.6
+    ports:
+      - '27017:27017'
+    command: --quiet --logpath /dev/null
+  test:
+    container_name: docker-node-app-test
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    ports:
+      - '8080:3030'
+    links:
+      - mongo
+    env_file: .env
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    environment:
+      - sendGridApiKey=$sendGridApiKey
+      - termiiApiKey=$termiiApiKey
+      - weApiPassword=$weApiPassword
+      - twilioSID=$twilioSID
+      - twilioSIDTest=$twilioSIDTest
+      - twilioApiKey=$twilioApiKey
+      - twilioApiKeyTest=$twilioApiKeyTest
+      - twilioApiSecret=$twilioApiSecret
+      - twilioApiSecretTest=$twilioApiSecretTest
+      - NODE_ENV=test
+      - firebaseKey=$firebaseKey
+      - apmApiKey=$apmApiKey
+    depends_on:
+      - mongo

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: messagingbackend-dev
+    namespace: dev
+    labels:
+        app.kubernetes.io/name: messagingbackend-dev-svc
+spec:
+    type: ClusterIP
+    ports:
+        - port: 3002
+          name: http
+    selector:
+        app: messagingbackend-dev

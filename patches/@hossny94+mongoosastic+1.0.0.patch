@@ -1,0 +1,30 @@
+diff --git a/node_modules/@hossny94/mongoosastic/lib/mongoosastic.js b/node_modules/@hossny94/mongoosastic/lib/mongoosastic.js
+index 12fd86a..3ffd264 100644
+--- a/node_modules/@hossny94/mongoosastic/lib/mongoosastic.js
++++ b/node_modules/@hossny94/mongoosastic/lib/mongoosastic.js
+@@ -477,7 +477,7 @@ function Mongoosastic (schema, pluginOpts) {
+       if (err) {
+         return cb(err)
+       }
+-      res = reformatESTotalNumber(res)
++      res = reformatESTotalNumber(res.body)
+       if (res.hits.total) {
+         res.hits.hits.forEach(doc => {
+           opts.model = doc
+@@ -667,7 +667,7 @@ function Mongoosastic (schema, pluginOpts) {
+         return cb(err)
+       }
+ 
+-      const resp = reformatESTotalNumber(res)
++      const resp = reformatESTotalNumber(res.body)
+       if (alwaysHydrate || opts.hydrate) {
+         hydrate(resp, _this, opts, cb)
+       } else {
+@@ -717,6 +717,7 @@ function Mongoosastic (schema, pluginOpts) {
+         for (let i = 0; i < res.items.length; i++) {
+           const info = res.items[i]
+           if (info && info.index && info.index.error) {
++            console.log(info.index.error)
+             bulkErrEm.emit('error', null, info.index)
+           }
+         }

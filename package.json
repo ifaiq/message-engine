@@ -1,0 +1,93 @@
+{
+  "name": "messagingengine",
+  "version": "3.8.1",
+  "description": "engine for notifications and messaging",
+  "exports": "./index.js",
+  "engines": {
+    "node": ">=12 <15"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --trace-warnings index.js",
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules ./node_modules/.bin/jest --verbose --forceExit --maxWorkers=1 --detectOpenHandles --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --coverageReporters=html",
+    "staging": "cross-env NODE_ENV=staging nodemon --trace-warnings index.js",
+    "development": "cross-env NODE_ENV=development nodemon --trace-warnings index.js",
+    "lint": "./node_modules/.bin/eslint ./ --fix",
+    "debug": "nodemon --inspect index.js",
+    "postinstall": "patch-package"
+  },
+  "jest": {
+    "coverageReporters": [
+      "cobertura",
+      "html"
+    ],
+    "testEnvironment": "node",
+    "testRunner": "jest-jasmine2",
+    "transform": {}
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "output": "junit.xml",
+    "outputDirectory": "test",
+    "classNameTemplate": "{classname} - {title}",
+    "titleTemplate": "{classname} - {title}",
+    "ancestorSeparator": " > ",
+    "usePathForSuiteName": "true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://mazadat@dev.azure.com/mazadat/ProjectX/_git/Messaging_Engine"
+  },
+  "author": "Mazad.at",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@elastic/ecs-morgan-format": "^1.1.0",
+    "@elastic/ecs-winston-format": "^1.3.1",
+    "@elastic/elasticsearch": "7.17.0",
+    "@firebase/app-compat": "^0.1.5",
+    "@firebase/app-types": "^0.7.0",
+    "@hossny94/mongoosastic": "^1.0.0",
+    "@sendgrid/mail": "^7.5.0",
+    "aws-sdk": "^2.1093.0",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "bull": "^4.1.0",
+    "config": "^3.3.6",
+    "elastic-apm-node": "^3.43.0",
+    "elasticsearch": "^16.7.1",
+    "expo-server-sdk": "^3.6.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "firebase-admin": "^10.0.0",
+    "google-libphonenumber": "^3.2.27",
+    "ioredis": "^4.25.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "~6.0.12",
+    "mongoose-update-if-current": "^1.4.0",
+    "nodemon": "^2.0.14",
+    "rand-token": "^1.0.1",
+    "twilio": "^3.75.1",
+    "winston": "^3.3.3",
+    "winston-elasticsearch": "^0.17.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.15.8",
+    "@jest/globals": "^27.3.1",
+    "apidoc": "^0.50.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^27.3.1",
+    "jest-cli": "^26.6.3",
+    "jest-junit": "^13.0.0",
+    "patch-package": "^6.5.1",
+    "postinstall-postinstall": "^2.1.0",
+    "supertest": "^6.1.6"
+  }
+}

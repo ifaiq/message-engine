@@ -1,0 +1,123 @@
+{
+    "timezone": "Africa/Cairo",
+    "frontend_host": "https://www.mazad.at/",
+    "storage_host": "https://mezostore.blob.core.windows.net/",
+    "email_address": "no-reply@mazad.at",
+    "bcc_email_address": "info@mazad.at",
+    "reports_mail": "info@mazad.at",
+    "brandName": "mazad.at",
+    "REDIS_HOST": "redis-leader.production.svc.cluster.local",
+    "REDIS_PORT": 6379,
+    "AI_URL": "http://aiengine.production.svc.cluster.local:8000",
+    "apm": {
+        "apmApiKey": "Secret Key"
+    },
+    "DB": {
+        "NAME": "MezoProd",
+        "URI": "mongodb://mongo.database.svc.cluster.local:37017,elastictwo.mazad.at:37017,elasticthree.mazad.at:37017/",
+        "OPTIONS": "?authSource=admin&replicaSet=mezoReplicaSet",
+        "URI_CLOUD_PREFIX": "mongodb+srv://",
+        "URI_CLOUD_HOST": "mezoreplicaset.3xnhr.mongodb.net/",
+        "URI_CLOUD_OPTIONS": "?retryWrites=true&w=majority",
+        "USERNAME": "myProdAdmin",
+        "ca": "mongoCA.pem",
+        "key": "client.pem"
+    },
+    "ES": {
+        "HOST1": "elastictwo.mazad.at",
+        "CLOUD_ID": "ElasticCloud:d2VzdGV1cm9wZS5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkODEyYTI3OTkxMTBiNGZmODgzYmQ5MjU4Njg0ZjQwNzEkY2U0OGYzN2Q4MjczNGQzNWExNDllMzE2ZGY0NTY0MWI=",
+        "PORT": 39200,
+        "USERNAME": "myProdAdmin",
+        "key": "es-client.pem",
+        "ca": "es-client-ca.cer"
+    },
+    "jwtPrivateKey": "Secret key",
+    "sms": {
+        "sender": "Mazadat",
+        "termiiApiKey": "Secret Key",
+        "weApiPassword": "weApiPassword",
+        "weApiUserName": "11021112904",
+        "weSender": "Mazadat",
+        "weAccountId": 1537,
+        "twilioSender": "Mazadat",
+        "twilioSID": "twilioSID",
+        "twilioSIDTest": "twilioSIDTest",
+        "twilioApiKey": "twilioApiKey",
+        "twilioApiKeyTest": "twilioApiKeyTest",
+        "twilioApiSecret": "twilioApiSecret",
+        "twilioApiSecretTest": "twilioApiSecretTest"
+    },
+    "mail": {
+        "sendGridApiKey": "Secret Key",
+        "mazadatSimpleEnTemplateId": "d-a265ef76152d4b4fb3e0dc5a0d04841b",
+        "mazadatSimpleArTemplateId": "d-066c072bb24c482083b34f73e3933342",
+        "emailVerificationTime": 1
+    },
+    "firebaseCredentials": {
+        "project_id": "mazadat-firebase",
+        "client_email": "firebase-adminsdk-6xwcj@mazadat-firebase.iam.gserviceaccount.com",
+        "firebaseKey": "Secret key"
+    },
+    "dbLogs": {
+        "level": "http",
+        "consoleLevel": "warn"
+    },
+    "freePeriodRemainingDays": 5,
+    "location": {
+        "maxDistance": 25000
+    },
+    "invitation": {
+        "maxNumberOfInvitations": 50,
+        "invitationExpiryTime": 7,
+        "resendCounter": 5,
+        "invitationUrl": "https://mazad.at/invitation"
+    },
+    "auction": {
+        "defaultBidIncrement": 10,
+        "maxLimitOfBeingHighestBidder": 5,
+        "silverCoinMultipleForPosting": 1
+    },
+    "charging": {
+        "noChargePeriod": 5
+    },
+    "maxInt32": 2147483647,
+    "biddingHistorySliceValue": 10,
+    "gifts": {
+        "numberOfUserGifts": 6,
+        "gift1ExpiryInDays": 30,
+        "gift2ExpiryInDays": 30,
+        "gift3ExpiryInDays": 30,
+        "gift4ExpiryInDays": 30,
+        "gift5ExpiryInDays": 30,
+        "gift6ExpiryInDays": 90,
+        "gift6PrimaryValue": 50,
+        "gift6SecondaryValue": 30,
+        "gift2Percentage": 4,
+        "gift4Percentage": 6,
+        "gift5Value": 100,
+        "gift6PrimaryMinimumPrice": 250,
+        "gift6SecondaryMinimumPrice": 500,
+        "gift5MinimumPrice": 1500,
+        "gift6MaxUsesBeforeBlock": 5
+    },
+    "post": {
+        "thumbnailsContainerName": "thumbnailsprod"
+    },
+    "promotionalPost": {
+        "thumbnailsContainerName": "thumbnailsprod"
+    },
+    "dayDeal": {
+        "thumbnailsContainerName": "thumbnailsprod"
+    },
+    "mazadatFirstUserID": "609c563e32b62c16bc327627",
+    "notificationsContainer": "notif-prod",
+    "engagement": {
+        "maxNumberOfSimilarPosts": 100,
+        "maxNumberOfSearchUsers": 10000
+    },
+    "reports": {
+        "containerName": "reports-prod"
+    },
+    "valetRequestEmail": "valet@mazad.at",
+    "PPSRequestEmail": "pps@mazad.at"
+}
